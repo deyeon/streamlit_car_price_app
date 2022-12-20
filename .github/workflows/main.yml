@@ -12,7 +12,14 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: ssh to ec2
-
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrects.SHH_PRIVATE_KEY }}
+          host: ${{ secrects.HOST }}
+          username: ${{ secrects.USER }}
+          script: |
+            cd streamlit_car_price_app
+            git pull
 
 
 
